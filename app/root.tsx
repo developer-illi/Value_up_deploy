@@ -30,7 +30,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <Meta />
         <Links />
-        <script type='text/javascript' src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoAppKey}`} />
+        <script type='text/javascript' src={`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoAppKey}`} />
         <title>Value Up Partners</title>
       </head>
       <body>
