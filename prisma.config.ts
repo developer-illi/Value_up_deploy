@@ -1,14 +1,10 @@
-import { PrismaClient } from "@prisma/client";
-import { PrismaPg } from "@prisma/adapter-pg";
-import pg from "pg";
+import 'dotenv/config'
+import { defineConfig } from '@prisma/config'
 
-// 1. 데이터베이스 커넥션 풀 설정
-const pool = new pg.Pool({ 
-  connectionString: process.env.DATABASE_URL || process.env.VITE_DIRECT_DATABASE_URL 
-});
-
-// 2. PostgreSQL 어댑터 생성
-const adapter = new PrismaPg(pool);
-
-// 3. PrismaClient 인스턴스 생성 시 어댑터 주입 (가장 중요!)
-export const prisma = new PrismaClient({ adapter });
+export default defineConfig({
+  schema: 'prisma/schema.prisma',
+  // 설정을 최소화하여 빌드 시점의 의존성을 제거합니다.
+  datasource: {
+    url: process.env.DATABASE_URL,
+  },
+})
