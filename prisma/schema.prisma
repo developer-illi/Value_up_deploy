@@ -1,0 +1,94 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "generated/prisma"
+  moduleFormat= "esm"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Layout {
+  id      Int    @id @default(autoincrement())
+  page    String @unique
+  config  Json
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+}
+
+// 예시 Prisma Schema
+model Subscriber {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+model Information {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String   @db.Text
+  image     String?  // 이미지 경로 또는 URL
+  createdAt DateTime @default(now())
+}
+
+model Portfolio {
+  id      Int     @id @default(autoincrement())
+  brand   String
+  name    String
+  title   String
+  content String  @db.Text
+  image   String?
+}
+
+model Project {
+  id    Int    @id @default(autoincrement())
+  type  String
+  title String
+  link  String?
+  image String?
+}
+
+model Partner {
+  id    Int    @id @default(autoincrement())
+  name  String
+  logo  String
+  url   String?
+}
+
+model PartnerCeo {
+  id          Int      @id @default(1)
+  position    String
+  name        String
+  englishName String
+  description String   @db.Text
+  image       String?
+  updatedAt   DateTime @updatedAt
+}
+
+model OutroMessage {
+  id        Int      @id @default(1)
+  title     String
+  subtitle  String
+  updatedAt DateTime @updatedAt
+}
+
+model CompanyInfo {
+  id        Int      @id @default(1)
+  address   String
+  phone     String
+  fax       String?
+  mail      String
+  latitude  Decimal?
+  longitude Decimal?
+  updatedAt DateTime @updatedAt
+}
