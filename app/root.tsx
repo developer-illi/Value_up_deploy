@@ -22,7 +22,7 @@ export const links: Route.LinksFunction = () => [
 ]
 
 const SITE_URL = import.meta.env.VITE_SITE_URL as string | undefined
-const OG_IMAGE_URL = SITE_URL ? `${SITE_URL}/og-image.jpeg` | undefined
+const OG_IMAGE_URL = SITE_URL ? `${SITE_URL}/og-image.jpeg` : undefined
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const kakaoAppKey = import.meta.env.VITE_KAKAO_API
