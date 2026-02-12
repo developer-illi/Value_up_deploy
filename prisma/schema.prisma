@@ -1,23 +1,22 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client"
-  output   = "generated/prisma"
-  moduleFormat= "esm"
+  provider        = "prisma-client-js"
+  // [수정] output을 제거하여 기본 경로(node_modules/.prisma/client)를 사용하게 합니다.
+  // pnpm 환경에서는 기본 경로를 쓰는 것이 모듈 참조 에러를 방지하는 가장 좋은 방법입니다.
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
   provider = "postgresql"
+  // [수정] URL 설정은 prisma.config.ts에서 관리하므로 여기서는 비워둡니다. (Prisma 7 기준)
 }
 
 model Layout {
-  id      Int    @id @default(autoincrement())
-  page    String @unique
-  config  Json
+  id     Int    @id @default(autoincrement())
+  page   String @unique
+  config Json
 }
 
 model User {
@@ -26,7 +25,6 @@ model User {
   password String
 }
 
-// 예시 Prisma Schema
 model Subscriber {
   id        Int      @id @default(autoincrement())
   email     String   @unique
@@ -37,7 +35,7 @@ model Information {
   id        Int      @id @default(autoincrement())
   title     String
   content   String   @db.Text
-  image     String?  // 이미지 경로 또는 URL
+  image     String?
   createdAt DateTime @default(now())
 }
 
