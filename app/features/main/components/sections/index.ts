@@ -1,0 +1,7 @@
+export { Contact } from './contact'
+export { Hero } from './hero'
+export { Intro } from './intro'
+export { Outro } from './outro'
+export { Partners } from './partners'
+export { Portfolio } from './portfolio'
+export { Project } from './project'

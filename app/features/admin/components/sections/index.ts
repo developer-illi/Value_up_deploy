@@ -1,0 +1,8 @@
+export { Hero } from './hero'
+export { PreIntro } from './pre-intro'
+export { Intro } from './intro'
+export { Portfolio } from './portfolio'
+export { Project } from './project'
+export { Partners } from './partners'
+export { Outro } from './outro'
+export { Contact } from './contact'
