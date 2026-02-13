@@ -21,8 +21,6 @@ export const links: Route.LinksFunction = () => [
   },
 ]
 
-const SITE_URL = import.meta.env.VITE_SITE_URL as string | undefined
-const OG_IMAGE_URL = SITE_URL ? `${SITE_URL}/og-image.jpeg` : undefined
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const kakaoAppKey = import.meta.env.VITE_KAKAO_API
@@ -33,14 +31,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <Meta />
         <Links />
-        <meta property='og:type' content='website' />
-        <meta property='og:site_name' content='Value Up Partners' />
-        <meta property='og:title' content='Value Up Partners' />
-        <meta property='og:description' content='VALUE UP PARTNERS - 날개를 달아주는 기업 컨설팅' />
-        {OG_IMAGE_URL && <meta property='og:image' content={OG_IMAGE_URL} />}
-        {SITE_URL && <meta property='og:url' content={SITE_URL} />}
-        <meta name='twitter:card' content='summary_large_image' />
-        {OG_IMAGE_URL && <meta name='twitter:image' content={OG_IMAGE_URL} />}
         <script type='text/javascript' src={`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoAppKey}`} />
         <title>Value Up Partners</title>
       </head>
