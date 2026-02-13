@@ -6,7 +6,21 @@ import { prisma } from '~/lib/db.server'
 import type { LoaderFunctionArgs, MetaFunction } from 'react-router'
 
 export const meta: MetaFunction = () => {
-  return [{ title: 'Value Up Partners' }, { name: 'description', content: 'VALUE UP PARTNERS - 날개를 달아주는 기업 컨설팅' }]
+    const siteUrl = import.meta.env.VITE_SITE_URL as string
+    const ogImage = `${siteUrl}/og-image.jpeg`
+    return [
+        { title: 'Value Up Partners' },
+        { name: 'description', content: 'VALUE UP PARTNERS - 날개를 달아주는 기업 컨설팅' },
+        { property: 'og:locale', content: 'ko' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:site_name', content: 'Value Up Partners' },
+        { property: 'og:title', content: 'Value Up Partners' },
+        { property: 'og:description', content: 'VALUE UP PARTNERS - 날개를 달아주는 기업 컨설팅' },
+        { property: 'og:image', content: ogImage },
+        { property: 'og:url', content: siteUrl },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:image', content: ogImage },
+    ]
 }
 
 export async function loader({ request }: LoaderFunctionArgs) {
